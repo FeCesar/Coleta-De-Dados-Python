@@ -27,29 +27,29 @@ def hello():
     print("NOME DA RECEITA: " + nomeReceita)
 
     # Instancia os igredientes
-    textJsonIgrediente = ""
+    textJsonIngrediente = ""
 
     # Captura todos os igredientes da receita
-    igredientes = chrome.find_elements_by_class_name('p-ingredient')
-    for contadorIgrediente in range(len(igredientes)):
-        igrediente = igredientes[contadorIgrediente].text
+    ingredientes = chrome.find_elements_by_class_name('p-ingredient')
+    for contadorIngrediente in range(len(ingredientes)):
+        ingrediente = ingredientes[contadorIngrediente].text
         
-        if len(igredientes) == igredientes.index(igredientes[contadorIgrediente]) + 1:
-            textJsonIgrediente += igrediente
+        if len(ingredientes) == ingredientes.index(ingredientes[contadorIngrediente]) + 1:
+            textJsonIngrediente += ingrediente
         else:
-            textJsonIgrediente += igrediente + ", "
+            textJsonIngrediente += ingrediente + ", "
     
 
-    textJsonIgrediente = textJsonIgrediente.split(",")
+    textJsonIngrediente = textJsonIngrediente.split(",")
 
 
     jsonReceita = {
         "receita": nomeReceita,
-        "igredientes": []
+        "ingredientes": []
     }
 
-    for index in textJsonIgrediente:
-        jsonReceita['igredientes'] += [index]
+    for index in textJsonIngrediente:
+        jsonReceita['ingredientes'] += [index]
 
         
     return json.dumps(jsonReceita, indent = 2)
