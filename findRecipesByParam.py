@@ -12,7 +12,7 @@ parameters = ["farinha de trigo", "ovo"]
 leghtParameters = len(parameters)
 find = ""
 
-# Formulação da busca
+# Formulação da string de busca
 for parameter in parameters:
     if(leghtParameters == parameters.index(parameter) + 1):
         find += parameter
@@ -35,7 +35,8 @@ for link in listaReceitas:
     linksReceitas.append(link.get_attribute('href'))
 
 # Pegando todas as informações das receitas
-for index in range(3):
+QUANTIDADE_DE_RECEITAS_RETORNADAS = 3
+for index in range(QUANTIDADE_DE_RECEITAS_RETORNADAS):
 
     # Abrindo os links da linksReceitas
     chrome.get(linksReceitas[index])
